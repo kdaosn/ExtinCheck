@@ -16,7 +16,7 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
   final _codeController = TextEditingController();
   final _brandController = TextEditingController();
   final _notesController = TextEditingController();
-  
+
   String _selectedType = 'PQS 6kg';
   String _selectedLocation = '';
   bool _isLoading = false;
@@ -40,10 +40,10 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
   Future<void> _handleSave() async {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
-      
+
       // Simulate API call
       await Future.delayed(const Duration(seconds: 1));
-      
+
       if (mounted) {
         context.pop();
         ScaffoldMessenger.of(context).showSnackBar(
@@ -56,9 +56,7 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Agregar Extintor'),
-      ),
+      appBar: AppBar(title: const Text('Agregar Extintor')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -78,9 +76,9 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Type dropdown
               const Text(
                 'Tipo',
@@ -101,18 +99,17 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   ),
                 ),
                 items: _types.map((type) {
-                  return DropdownMenuItem(
-                    value: type,
-                    child: Text(type),
-                  );
+                  return DropdownMenuItem(value: type, child: Text(type));
                 }).toList(),
                 onChanged: (value) {
-                  setState(() => _selectedType = value!);
+                  if (value != null) {
+                    setState(() => _selectedType = value);
+                  }
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Brand field
               CustomTextField(
                 label: 'Marca',
@@ -125,9 +122,9 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Location field
               const Text(
                 'Ubicación',
@@ -170,9 +167,9 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Manufacturing date
               CustomTextField(
                 label: 'Fecha de fabricación',
@@ -184,9 +181,9 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Expiry date
               CustomTextField(
                 label: 'Fecha de vencimiento',
@@ -198,9 +195,9 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Notes
               const Text(
                 'Notas',
@@ -223,23 +220,20 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 32),
-              
+
               // Save button
               PrimaryButton(
                 text: 'Guardar Extintor',
                 onPressed: _handleSave,
                 isLoading: _isLoading,
               ),
-              
+
               const SizedBox(height: 12),
-              
+
               // Cancel button
-              SecondaryButton(
-                text: 'Cancelar',
-                onPressed: () => context.pop(),
-              ),
+              SecondaryButton(text: 'Cancelar', onPressed: () => context.pop()),
             ],
           ),
         ),

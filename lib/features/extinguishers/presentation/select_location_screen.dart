@@ -16,12 +16,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
   final List<Map<String, dynamic>> _locations = [
     {
       'floor': 'Piso 1',
-      'areas': [
-        'Recepción',
-        'Pasillo A',
-        'Pasillo B',
-        'Sala de conferencias',
-      ],
+      'areas': ['Recepción', 'Pasillo A', 'Pasillo B', 'Sala de conferencias'],
     },
     {
       'floor': 'Piso 2',
@@ -34,20 +29,14 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
     },
     {
       'floor': 'Piso 3',
-      'areas': [
-        'Oficina 301',
-        'Pasillo principal',
-        'Almacén',
-      ],
+      'areas': ['Oficina 301', 'Pasillo principal', 'Almacén'],
     },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Seleccionar Ubicación'),
-      ),
+      appBar: AppBar(title: const Text('Seleccionar Ubicación')),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: _locations.length,
@@ -66,19 +55,24 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
               children: (floor['areas'] as List<String>).map((area) {
                 final location = '${floor['floor']} - $area';
                 final isSelected = _selectedLocation == location;
-                
+
                 return ListTile(
                   title: Text(area),
                   leading: Radio<String>(
                     value: location,
                     groupValue: _selectedLocation,
-                    activeColor: AppTheme.primaryRed,
+                    fillColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return AppTheme.primaryRed;
+                      }
+                      return null;
+                    }),
                     onChanged: (value) {
                       setState(() => _selectedLocation = value);
                     },
                   ),
                   selected: isSelected,
-                  selectedTileColor: AppTheme.primaryRed.withOpacity(0.1),
+                  selectedTileColor: AppTheme.primaryRed.withValues(alpha: 0.1),
                   onTap: () {
                     setState(() => _selectedLocation = location);
                   },
@@ -94,7 +88,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
           color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, -5),
             ),

@@ -6,11 +6,8 @@ import 'package:extincheck/core/widgets/common_widgets.dart';
 /// Edit extinguisher screen
 class EditExtinguisherScreen extends StatefulWidget {
   final String extinguisherId;
-  
-  const EditExtinguisherScreen({
-    super.key,
-    required this.extinguisherId,
-  });
+
+  const EditExtinguisherScreen({super.key, required this.extinguisherId});
 
   @override
   State<EditExtinguisherScreen> createState() => _EditExtinguisherScreenState();
@@ -21,7 +18,7 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
   late TextEditingController _codeController;
   late TextEditingController _brandController;
   late TextEditingController _notesController;
-  
+
   String _selectedType = 'PQS 6kg';
   String _selectedLocation = 'Piso 1 - Pasillo A';
   bool _isLoading = false;
@@ -40,7 +37,9 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
     // Load existing data (mock)
     _codeController = TextEditingController(text: 'EXT-001');
     _brandController = TextEditingController(text: 'FIREX');
-    _notesController = TextEditingController(text: 'Extintor en buenas condiciones');
+    _notesController = TextEditingController(
+      text: 'Extintor en buenas condiciones',
+    );
   }
 
   @override
@@ -54,10 +53,10 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
   Future<void> _handleSave() async {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
-      
+
       // Simulate API call
       await Future.delayed(const Duration(seconds: 1));
-      
+
       if (mounted) {
         context.pop();
         ScaffoldMessenger.of(context).showSnackBar(
@@ -70,9 +69,7 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Editar Extintor'),
-      ),
+      appBar: AppBar(title: const Text('Editar Extintor')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -92,9 +89,9 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Type dropdown
               const Text(
                 'Tipo',
@@ -115,18 +112,17 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
                   ),
                 ),
                 items: _types.map((type) {
-                  return DropdownMenuItem(
-                    value: type,
-                    child: Text(type),
-                  );
+                  return DropdownMenuItem(value: type, child: Text(type));
                 }).toList(),
                 onChanged: (value) {
-                  setState(() => _selectedType = value!);
+                  if (value != null) {
+                    setState(() => _selectedType = value);
+                  }
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Brand field
               CustomTextField(
                 label: 'Marca',
@@ -139,9 +135,9 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
                   return null;
                 },
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Location field
               const Text(
                 'Ubicación',
@@ -178,9 +174,9 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 20),
-              
+
               // Notes
               const Text(
                 'Notas',
@@ -203,23 +199,20 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
                   ),
                 ),
               ),
-              
+
               const SizedBox(height: 32),
-              
+
               // Save button
               PrimaryButton(
                 text: 'Guardar Cambios',
                 onPressed: _handleSave,
                 isLoading: _isLoading,
               ),
-              
+
               const SizedBox(height: 12),
-              
+
               // Cancel button
-              SecondaryButton(
-                text: 'Cancelar',
-                onPressed: () => context.pop(),
-              ),
+              SecondaryButton(text: 'Cancelar', onPressed: () => context.pop()),
             ],
           ),
         ),

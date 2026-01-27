@@ -6,11 +6,8 @@ import 'package:extincheck/core/widgets/common_widgets.dart';
 /// Company detail screen
 class CompanyDetailScreen extends StatelessWidget {
   final String companyId;
-  
-  const CompanyDetailScreen({
-    super.key,
-    required this.companyId,
-  });
+
+  const CompanyDetailScreen({super.key, required this.companyId});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +52,7 @@ class CompanyDetailScreen extends StatelessWidget {
                     width: 80,
                     height: 80,
                     decoration: BoxDecoration(
-                      color: AppTheme.primaryRed.withOpacity(0.1),
+                      color: AppTheme.primaryRed.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: const Icon(
@@ -75,9 +72,9 @@ class CompanyDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Company info
             Container(
               padding: const EdgeInsets.all(16),
@@ -87,22 +84,25 @@ class CompanyDetailScreen extends StatelessWidget {
                 children: [
                   const Text(
                     'Información de Contacto',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
-                  _buildInfoRow(Icons.location_on, company['address'] as String),
+                  _buildInfoRow(
+                    Icons.location_on,
+                    company['address'] as String,
+                  ),
                   _buildInfoRow(Icons.phone, company['phone'] as String),
                   _buildInfoRow(Icons.email, company['email'] as String),
-                  _buildInfoRow(Icons.person, company['contactPerson'] as String),
+                  _buildInfoRow(
+                    Icons.person,
+                    company['contactPerson'] as String,
+                  ),
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Statistics
             Padding(
               padding: const EdgeInsets.all(16),
@@ -111,10 +111,7 @@ class CompanyDetailScreen extends StatelessWidget {
                 children: [
                   const Text(
                     'Estado de Extintores',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 12),
                   GridView.count(
@@ -154,9 +151,9 @@ class CompanyDetailScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Actions
             Padding(
               padding: const EdgeInsets.all(16),
@@ -189,12 +186,7 @@ class CompanyDetailScreen extends StatelessWidget {
         children: [
           Icon(icon, size: 20, color: AppTheme.textSecondary),
           const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 14),
-            ),
-          ),
+          Expanded(child: Text(text, style: const TextStyle(fontSize: 14))),
         ],
       ),
     );

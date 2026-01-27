@@ -19,9 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Configuración'),
-      ),
+      appBar: AppBar(title: const Text('Configuración')),
       body: ListView(
         children: [
           // User profile section
@@ -32,7 +30,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 CircleAvatar(
                   radius: 40,
-                  backgroundColor: AppTheme.primaryRed.withOpacity(0.1),
+                  backgroundColor: AppTheme.primaryRed.withValues(alpha: 0.1),
                   child: const Icon(
                     Icons.person,
                     size: 50,
@@ -42,17 +40,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(height: 16),
                 const Text(
                   'Juan Pérez',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const Text(
                   'juan.perez@ejemplo.com',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: AppTheme.textSecondary,
-                  ),
+                  style: TextStyle(fontSize: 14, color: AppTheme.textSecondary),
                 ),
                 const SizedBox(height: 16),
                 OutlinedButton.icon(
@@ -68,9 +60,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Notifications settings
           _buildSectionHeader('Notificaciones'),
           Container(
@@ -81,7 +73,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: const Text('Activar notificaciones'),
                   subtitle: const Text('Recibir alertas y recordatorios'),
                   value: _notificationsEnabled,
-                  activeColor: AppTheme.primaryRed,
+                  thumbColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed;
+                    }
+                    return null;
+                  }),
+                  trackColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed.withValues(alpha: 0.5);
+                    }
+                    return null;
+                  }),
                   onChanged: (value) {
                     setState(() => _notificationsEnabled = value);
                   },
@@ -90,7 +93,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SwitchListTile(
                   title: const Text('Notificaciones por correo'),
                   value: _emailNotifications,
-                  activeColor: AppTheme.primaryRed,
+                  thumbColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed;
+                    }
+                    return null;
+                  }),
+                  trackColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed.withValues(alpha: 0.5);
+                    }
+                    return null;
+                  }),
                   onChanged: (value) {
                     setState(() => _emailNotifications = value);
                   },
@@ -99,7 +113,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SwitchListTile(
                   title: const Text('Notificaciones push'),
                   value: _pushNotifications,
-                  activeColor: AppTheme.primaryRed,
+                  thumbColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed;
+                    }
+                    return null;
+                  }),
+                  trackColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed.withValues(alpha: 0.5);
+                    }
+                    return null;
+                  }),
                   onChanged: (value) {
                     setState(() => _pushNotifications = value);
                   },
@@ -108,7 +133,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 SwitchListTile(
                   title: const Text('Sonido'),
                   value: _soundEnabled,
-                  activeColor: AppTheme.primaryRed,
+                  thumbColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed;
+                    }
+                    return null;
+                  }),
+                  trackColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
+                      return AppTheme.primaryRed.withValues(alpha: 0.5);
+                    }
+                    return null;
+                  }),
                   onChanged: (value) {
                     setState(() => _soundEnabled = value);
                   },
@@ -116,9 +152,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // App settings
           _buildSectionHeader('Aplicación'),
           Container(
@@ -160,9 +196,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Account
           _buildSectionHeader('Cuenta'),
           Container(
@@ -191,17 +227,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
           ),
-          
+
           const SizedBox(height: 24),
-          
+
           // Version info
           const Center(
             child: Text(
               'ExtinCheck v1.0.0',
-              style: TextStyle(
-                fontSize: 12,
-                color: AppTheme.textHint,
-              ),
+              style: TextStyle(fontSize: 12, color: AppTheme.textHint),
             ),
           ),
           const SizedBox(height: 24),
@@ -260,9 +293,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Navigator.pop(context);
               context.go('/login');
             },
-            style: TextButton.styleFrom(
-              foregroundColor: AppTheme.errorRed,
-            ),
+            style: TextButton.styleFrom(foregroundColor: AppTheme.errorRed),
             child: const Text('Cerrar sesión'),
           ),
         ],

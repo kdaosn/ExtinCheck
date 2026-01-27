@@ -51,19 +51,16 @@ class ReportsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 16),
-            
+
             // Summary cards
             const Text(
               'Resumen',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
-            
+
             GridView.count(
               crossAxisCount: 2,
               shrinkWrap: true,
@@ -72,15 +69,35 @@ class ReportsScreen extends StatelessWidget {
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               children: [
-                _buildStatCard('Inspecciones', '35', Icons.assignment_turned_in, AppTheme.successGreen),
-                _buildStatCard('Pendientes', '12', Icons.pending_actions, AppTheme.warningOrange),
-                _buildStatCard('Mantenimientos', '8', Icons.build, AppTheme.accentBlue),
-                _buildStatCard('Incidencias', '3', Icons.error_outline, AppTheme.errorRed),
+                _buildStatCard(
+                  'Inspecciones',
+                  '35',
+                  Icons.assignment_turned_in,
+                  AppTheme.successGreen,
+                ),
+                _buildStatCard(
+                  'Pendientes',
+                  '12',
+                  Icons.pending_actions,
+                  AppTheme.warningOrange,
+                ),
+                _buildStatCard(
+                  'Mantenimientos',
+                  '8',
+                  Icons.build,
+                  AppTheme.accentBlue,
+                ),
+                _buildStatCard(
+                  'Incidencias',
+                  '3',
+                  Icons.error_outline,
+                  AppTheme.errorRed,
+                ),
               ],
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Chart
             Card(
               child: Padding(
@@ -109,7 +126,14 @@ class ReportsScreen extends StatelessWidget {
                               sideTitles: SideTitles(
                                 showTitles: true,
                                 getTitlesWidget: (value, meta) {
-                                  const months = ['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+                                  const months = [
+                                    'Jul',
+                                    'Ago',
+                                    'Sep',
+                                    'Oct',
+                                    'Nov',
+                                    'Dic',
+                                  ];
                                   if (value.toInt() < months.length) {
                                     return Text(
                                       months[value.toInt()],
@@ -147,19 +171,16 @@ class ReportsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             const SizedBox(height: 24),
-            
+
             // Recent activities
             const Text(
               'Actividades Recientes',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
-            
+
             _buildActivityItem(
               'Inspección completada',
               'EXT-001 - Piso 1',
@@ -187,7 +208,12 @@ class ReportsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard(String title, String value, IconData icon, Color color) {
+  Widget _buildStatCard(
+    String title,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -246,22 +272,16 @@ class ReportsScreen extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.1),
+            color: color.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(icon, color: color),
         ),
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.w600),
-        ),
+        title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text(subtitle),
         trailing: Text(
           date,
-          style: const TextStyle(
-            fontSize: 12,
-            color: AppTheme.textSecondary,
-          ),
+          style: const TextStyle(fontSize: 12, color: AppTheme.textSecondary),
         ),
       ),
     );

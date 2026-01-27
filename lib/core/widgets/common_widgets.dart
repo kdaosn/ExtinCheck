@@ -7,7 +7,7 @@ class PrimaryButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isLoading;
   final bool isFullWidth;
-  
+
   const PrimaryButton({
     super.key,
     required this.text,
@@ -15,7 +15,7 @@ class PrimaryButton extends StatelessWidget {
     this.isLoading = false,
     this.isFullWidth = true,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,9 +26,7 @@ class PrimaryButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppTheme.primaryRed,
           foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: isLoading
             ? const SizedBox(
@@ -56,14 +54,14 @@ class SecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final bool isFullWidth;
-  
+
   const SecondaryButton({
     super.key,
     required this.text,
     required this.onPressed,
     this.isFullWidth = true,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -74,16 +72,11 @@ class SecondaryButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           foregroundColor: AppTheme.accentBlue,
           side: const BorderSide(color: AppTheme.accentBlue),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         child: Text(
           text,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
     );
@@ -99,7 +92,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
-  
+
   const CustomTextField({
     super.key,
     required this.label,
@@ -110,7 +103,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.validator,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -145,7 +138,10 @@ class CustomTextField extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppTheme.primaryRed, width: 2),
+              borderSide: const BorderSide(
+                color: AppTheme.primaryRed,
+                width: 2,
+              ),
             ),
           ),
         ),
@@ -160,7 +156,7 @@ class KpiCard extends StatelessWidget {
   final String value;
   final IconData icon;
   final Color color;
-  
+
   const KpiCard({
     super.key,
     required this.title,
@@ -168,7 +164,7 @@ class KpiCard extends StatelessWidget {
     required this.icon,
     required this.color,
   });
-  
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -209,12 +205,9 @@ class KpiCard extends StatelessWidget {
 /// Status badge for extinguisher status
 class StatusBadge extends StatelessWidget {
   final String status;
-  
-  const StatusBadge({
-    super.key,
-    required this.status,
-  });
-  
+
+  const StatusBadge({super.key, required this.status});
+
   Color _getStatusColor() {
     switch (status.toLowerCase()) {
       case 'vigente':
@@ -230,13 +223,13 @@ class StatusBadge extends StatelessWidget {
         return AppTheme.textSecondary;
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: _getStatusColor().withOpacity(0.1),
+        color: _getStatusColor().withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: _getStatusColor()),
       ),

@@ -85,13 +85,16 @@ class NotificationsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildNotificationItem(BuildContext context, Map<String, dynamic> notification) {
+  Widget _buildNotificationItem(
+    BuildContext context,
+    Map<String, dynamic> notification,
+  ) {
     final isRead = notification['read'] as bool;
     final type = notification['type'] as String;
-    
+
     Color iconColor;
     IconData icon;
-    
+
     switch (type) {
       case 'warning':
         iconColor = AppTheme.warningOrange;
@@ -111,12 +114,14 @@ class NotificationsScreen extends StatelessWidget {
     }
 
     return Container(
-      color: isRead ? Colors.white : AppTheme.primaryRed.withOpacity(0.05),
+      color: isRead
+          ? Colors.white
+          : AppTheme.primaryRed.withValues(alpha: 0.05),
       child: ListTile(
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.1),
+            color: iconColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(icon, color: iconColor),
@@ -135,10 +140,7 @@ class NotificationsScreen extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               notification['time'] as String,
-              style: const TextStyle(
-                fontSize: 12,
-                color: AppTheme.textHint,
-              ),
+              style: const TextStyle(fontSize: 12, color: AppTheme.textHint),
             ),
           ],
         ),

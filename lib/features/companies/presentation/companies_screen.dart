@@ -34,9 +34,7 @@ class CompaniesScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Empresas'),
-      ),
+      appBar: AppBar(title: const Text('Empresas')),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: companies.length,
@@ -50,7 +48,7 @@ class CompaniesScreen extends StatelessWidget {
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryRed.withOpacity(0.1),
+                  color: AppTheme.primaryRed.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(

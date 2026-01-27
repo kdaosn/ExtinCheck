@@ -8,7 +8,8 @@ class ExtinguishersListScreen extends StatefulWidget {
   const ExtinguishersListScreen({super.key});
 
   @override
-  State<ExtinguishersListScreen> createState() => _ExtinguishersListScreenState();
+  State<ExtinguishersListScreen> createState() =>
+      _ExtinguishersListScreenState();
 }
 
 class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
@@ -88,7 +89,7 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
                   onChanged: (value) => setState(() {}),
                 ),
                 const SizedBox(height: 12),
-                
+
                 // Filter chips
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -104,7 +105,7 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
               ],
             ),
           ),
-          
+
           // Extinguishers list
           Expanded(
             child: ListView.builder(
@@ -137,7 +138,7 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
         onSelected: (selected) {
           setState(() => _selectedFilter = label);
         },
-        selectedColor: AppTheme.primaryRed.withOpacity(0.2),
+        selectedColor: AppTheme.primaryRed.withValues(alpha: 0.2),
         checkmarkColor: AppTheme.primaryRed,
         labelStyle: TextStyle(
           color: isSelected ? AppTheme.primaryRed : AppTheme.textSecondary,
@@ -147,7 +148,10 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
     );
   }
 
-  Widget _buildExtinguisherCard(BuildContext context, Map<String, dynamic> ext) {
+  Widget _buildExtinguisherCard(
+    BuildContext context,
+    Map<String, dynamic> ext,
+  ) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
@@ -174,7 +178,11 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  const Icon(Icons.fire_extinguisher, size: 16, color: AppTheme.textSecondary),
+                  const Icon(
+                    Icons.fire_extinguisher,
+                    size: 16,
+                    color: AppTheme.textSecondary,
+                  ),
                   const SizedBox(width: 4),
                   Text(
                     ext['type'],
@@ -188,7 +196,11 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
               const SizedBox(height: 4),
               Row(
                 children: [
-                  const Icon(Icons.location_on, size: 16, color: AppTheme.textSecondary),
+                  const Icon(
+                    Icons.location_on,
+                    size: 16,
+                    color: AppTheme.textSecondary,
+                  ),
                   const SizedBox(width: 4),
                   Expanded(
                     child: Text(

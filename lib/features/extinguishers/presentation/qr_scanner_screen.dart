@@ -35,29 +35,24 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                     width: 250,
                     height: 250,
                     decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppTheme.accentBlue,
-                        width: 3,
-                      ),
+                      border: Border.all(color: AppTheme.accentBlue, width: 3),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: CustomPaint(
-                      painter: ScannerCornersPainter(),
-                    ),
+                    child: CustomPaint(painter: ScannerCornersPainter()),
                   ),
                   const SizedBox(height: 32),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.black54,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Text(
                       'Apunta la cámara al código QR',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -65,7 +60,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
               ),
             ),
           ),
-          
+
           // Bottom controls
           Positioned(
             bottom: 40,
@@ -109,7 +104,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
           width: 60,
           height: 60,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.2),
+            color: Colors.white.withValues(alpha: 0.2),
             shape: BoxShape.circle,
           ),
           child: IconButton(
@@ -119,13 +114,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        Text(
-          label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-          ),
-        ),
+        Text(label, style: const TextStyle(color: Colors.white, fontSize: 12)),
       ],
     );
   }
@@ -147,12 +136,28 @@ class ScannerCornersPainter extends CustomPainter {
     canvas.drawLine(const Offset(0, 0), const Offset(0, cornerLength), paint);
 
     // Top-right corner
-    canvas.drawLine(Offset(size.width - cornerLength, 0), Offset(size.width, 0), paint);
-    canvas.drawLine(Offset(size.width, 0), Offset(size.width, cornerLength), paint);
+    canvas.drawLine(
+      Offset(size.width - cornerLength, 0),
+      Offset(size.width, 0),
+      paint,
+    );
+    canvas.drawLine(
+      Offset(size.width, 0),
+      Offset(size.width, cornerLength),
+      paint,
+    );
 
     // Bottom-left corner
-    canvas.drawLine(Offset(0, size.height - cornerLength), Offset(0, size.height), paint);
-    canvas.drawLine(const Offset(0, 0) + Offset(0, size.height), Offset(cornerLength, size.height), paint);
+    canvas.drawLine(
+      Offset(0, size.height - cornerLength),
+      Offset(0, size.height),
+      paint,
+    );
+    canvas.drawLine(
+      const Offset(0, 0) + Offset(0, size.height),
+      Offset(cornerLength, size.height),
+      paint,
+    );
 
     // Bottom-right corner
     canvas.drawLine(
