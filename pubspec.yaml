@@ -40,6 +40,7 @@ dependencies:
   
   # UI
   cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
   gap: ^3.0.1
   
   # QR Scanner

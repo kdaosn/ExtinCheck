@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// App theme configuration based on Figma design
 /// Main color: Red (#D32F2F) for fire extinguisher safety branding
 /// Supporting colors: Blue accents, white backgrounds
 class AppTheme {
-  // Primary Colors
+  // Primary Colors (rest of the class remains the same...)
   static const Color primaryRed = Color(0xFFD32F2F);
   static const Color primaryRedDark = Color(0xFFB71C1C);
   static const Color primaryRedLight = Color(0xFFEF5350);
@@ -30,8 +31,11 @@ class AppTheme {
   static const Color infoBlue = Color(0xFF2196F3);
 
   static ThemeData get lightTheme {
+    final baseTextTheme = GoogleFonts.ibmPlexSansTextTheme();
+
     return ThemeData(
       useMaterial3: true,
+      fontFamily: GoogleFonts.ibmPlexSans().fontFamily,
       colorScheme: ColorScheme.fromSeed(
         seedColor: primaryRed,
         primary: primaryRed,
@@ -40,11 +44,16 @@ class AppTheme {
         error: errorRed,
       ),
       scaffoldBackgroundColor: backgroundGrey,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: primaryRed,
         foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
+        titleTextStyle: GoogleFonts.ibmPlexSans(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Colors.white,
+        ),
       ),
       cardTheme: const CardThemeData(
         color: backgroundWhite,
@@ -58,6 +67,10 @@ class AppTheme {
           backgroundColor: primaryRed,
           foregroundColor: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+          textStyle: GoogleFonts.ibmPlexSans(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -80,38 +93,51 @@ class AppTheme {
           borderSide: const BorderSide(color: primaryRed, width: 2),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        labelStyle: GoogleFonts.ibmPlexSans(fontSize: 14, color: textSecondary),
+        hintStyle: GoogleFonts.ibmPlexSans(fontSize: 14, color: textHint),
       ),
-      textTheme: const TextTheme(
-        headlineLarge: TextStyle(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
+      textTheme: baseTextTheme.copyWith(
+        // Títulos sobrios (22–18 px, semibold)
+        headlineMedium: GoogleFonts.ibmPlexSans(
+          fontSize: 22,
+          fontWeight: FontWeight.w600,
           color: textPrimary,
         ),
-        headlineMedium: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: textPrimary,
-        ),
-        titleLarge: TextStyle(
+        titleLarge: GoogleFonts.ibmPlexSans(
           fontSize: 20,
           fontWeight: FontWeight.w600,
           color: textPrimary,
         ),
-        titleMedium: TextStyle(
-          fontSize: 16,
+        titleMedium: GoogleFonts.ibmPlexSans(
+          fontSize: 18,
           fontWeight: FontWeight.w600,
           color: textPrimary,
         ),
-        bodyLarge: TextStyle(
+        // Texto principal legible (16–14 px, regular)
+        bodyLarge: GoogleFonts.ibmPlexSans(
           fontSize: 16,
+          fontWeight: FontWeight.w400,
           color: textPrimary,
         ),
-        bodyMedium: TextStyle(
+        bodyMedium: GoogleFonts.ibmPlexSans(
           fontSize: 14,
+          fontWeight: FontWeight.w400,
           color: textSecondary,
         ),
-        bodySmall: TextStyle(
+        // Labels técnicos (12 px, medium)
+        labelLarge: GoogleFonts.ibmPlexSans(
           fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: textSecondary,
+        ),
+        labelMedium: GoogleFonts.ibmPlexSans(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: textHint,
+        ),
+        labelSmall: GoogleFonts.ibmPlexSans(
+          fontSize: 10, // Small technical label
+          fontWeight: FontWeight.w500,
           color: textHint,
         ),
       ),
