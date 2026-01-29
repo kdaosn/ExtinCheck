@@ -41,7 +41,6 @@ class NotificationsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notificaciones'),
         actions: [
           TextButton(
             onPressed: () {

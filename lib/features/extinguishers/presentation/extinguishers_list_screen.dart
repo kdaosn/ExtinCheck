@@ -57,7 +57,6 @@ class _ExtinguishersListScreenState extends State<ExtinguishersListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Extintores'),
         actions: [
           IconButton(
             icon: const Icon(Icons.qr_code_scanner),

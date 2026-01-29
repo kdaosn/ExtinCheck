@@ -56,7 +56,7 @@ class _AddExtinguisherScreenState extends State<AddExtinguisherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Agregar Extintor')),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Form(

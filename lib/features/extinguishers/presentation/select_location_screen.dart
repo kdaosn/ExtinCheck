@@ -36,7 +36,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Seleccionar Ubicación')),
+      appBar: AppBar(),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: _locations.length,

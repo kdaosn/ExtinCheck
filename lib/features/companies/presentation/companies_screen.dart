@@ -34,7 +34,7 @@ class CompaniesScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Empresas')),
+      appBar: AppBar(),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
         itemCount: companies.length,

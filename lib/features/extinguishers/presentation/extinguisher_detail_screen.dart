@@ -29,7 +29,6 @@ class ExtinguisherDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(extinguisher['code']!),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),

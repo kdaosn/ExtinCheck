@@ -27,7 +27,6 @@ class CompanyDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(company['name'] as String),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),

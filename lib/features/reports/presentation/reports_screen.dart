@@ -10,7 +10,6 @@ class ReportsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reportes'),
         actions: [
           IconButton(
             icon: const Icon(Icons.file_download),

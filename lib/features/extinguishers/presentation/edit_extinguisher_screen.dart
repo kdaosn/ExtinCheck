@@ -69,7 +69,7 @@ class _EditExtinguisherScreenState extends State<EditExtinguisherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Editar Extintor')),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Form(
